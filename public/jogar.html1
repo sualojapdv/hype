@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style>
+      /* Estilos globais */
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #000000;
+        overflow: hidden; /* Remover scroll global */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Estilos para desktop */
+      @media (min-width: 769px) {
+        iframe {
+          border: none;
+          width: 540px;
+          height: 100vh;
+          box-shadow: none;
+          border-radius: 0;
+          overflow: hidden;
+        }
+      }
+
+      /* Estilos para dispositivos móveis */
+      @media (max-width: 768px) {
+        iframe {
+          border: none;
+          width: 100vw;
+          height: 100vh;
+          box-shadow: none;
+          border-radius: 0;
+          overflow: hidden;
+        }
+
+        /* Garantir que o scroll esteja desativado */
+        .scroll-container {
+          width: 100vw;
+          height: 100vh;
+          overflow: hidden;
+        }
+      }
+
+      /* Customizando a barra de rolagem (opcional) */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Para navegadores que não suportam ::-webkit-scrollbar */
+      body {
+        -ms-overflow-style: none;  /* Para Internet Explorer e Edge */
+        scrollbar-width: none;     /* Para Firefox */
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+        var iframe = document.getElementById("myIframe");
+        var baseURL = window.location.origin;
+        var iframeURL = baseURL + "/home/game";
+
+        iframe.src = iframeURL;
+
+        iframe.onload = function () {
+          try {
+            var iframeDocument =
+              iframe.contentDocument || iframe.contentWindow.document;
+            document.title = iframeDocument.title;
+          } catch (e) {
+            console.error(
+              "Não é possível acessar o conteúdo do iframe devido a restrições de origem diferente."
+            );
+          }
+        };
+      };
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Obtém o título armazenado no Local Storage
+        const siteTitle = localStorage.getItem("siteTitle");
+
+        // Se o título existir no local storage, atualiza o título da página
+        if (siteTitle) {
+          document.title = siteTitle + " - Jogar";
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="scroll-container">
+      <iframe id="myIframe" title="Jogo incorporado"></iframe>
+    </div>
+  </body>
+</html>

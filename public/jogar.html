@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+   <style>
+   @media (min-width: 769px) {
+  /* Estilos para Desktop */
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #a11d00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden !important;
+  }
+
+  iframe {
+    border: none;
+    width: 480px;
+    height: 100vh;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden !important;
+  }
+}
+
+ /* Customizando a barra de rolagem */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Track (fundo da barra de rolagem) */
+    ::-webkit-scrollbar-track {
+      display: none;
+    }
+
+    /* Thumb (parte móvel da barra de rolagem) */
+    ::-webkit-scrollbar-thumb {
+      display: none;
+    }
+
+    /* Quando o usuário estiver interagindo com a parte móvel */
+    ::-webkit-scrollbar-thumb:hover {
+      display: none;
+    }
+
+@media (max-width: 768px) {
+  /* Estilos para Mobile (padrão) */
+  html, body {
+      padding: 0;
+      margin: 0;
+    height: 100%;
+    background-color: #313843;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden !important;
+  }
+  
+
+  iframe {
+    border: none;
+    width: 100vw;
+    height: 94vh;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden !important;
+  }
+  
+  /* Container com overflow para rolagem oculta */
+    .scroll-container {
+      width: 100vw;
+      height: 94vh;
+      overflow-y: scroll;
+      -ms-overflow-style: none;  /* Para IE e Edge */
+      scrollbar-width: none;     /* Para Firefox */
+    }
+
+    /* Ocultando a barra de rolagem no WebKit (Chrome, Safari) */
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+}
+
+  </style>
+  
+    <script>
+      window.onload = function () {
+        var iframe = document.getElementById("myIframe");
+        var baseURL = window.location.origin;
+        var iframeURL = baseURL + "/home/games";
+
+        iframe.src = iframeURL;
+
+        iframe.onload = function () {
+          try {
+            var iframeDocument =
+              iframe.contentDocument || iframe.contentWindow.document;
+            document.title = iframeDocument.title;
+          } catch (e) {
+            console.error(
+              "Não é possível acessar o conteúdo do iframe devido a restrições de origem diferente."
+            );
+          }
+        };
+      };
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Obtém o título armazenado no Local Storage
+        const siteTitle = localStorage.getItem("siteTitle");
+
+        // Se o título existir no local storage, atualiza o título da página
+        if (siteTitle) {
+          document.title = siteTitle + " - Jogar";
+        }
+      });
+    </script>
+  </head>
+  <body >
+      <div class="scroll-container">
+    <iframe id="myIframe" title="Jogo incorporado"></iframe>
+    </div>
+  </body>
+</html>
