@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="NetEnt">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/public/storage/PlayFiver/NetEnt/NetEnt.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

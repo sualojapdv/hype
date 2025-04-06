@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="archive2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/public/storage/rox/archive.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
